@@ -6,9 +6,8 @@ import IInput from '../IInput.vue'
 
 <template>
   <div class="px-6 text-grey">
-    <IInput />
     <div class="mb-[18px]">Додані маркери</div>
-    <FavoritePlace v-for="n in 4" :key="n" />
+    <FavoritePlace v-for="n in 2" :key="n" />
     <IButton class="w-full mt-10" variant="gradient">Додати маркер</IButton>
   </div>
 </template>
