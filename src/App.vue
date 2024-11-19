@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import LoginForm from './components/Auth/LoginForm/LoginForm.vue'
+// import LoginForm from './components/Auth/LoginForm/LoginForm.vue'
 import IModal from './components/IModal/IModal.vue'
-import RegistrationForm from './components/Auth/RegistrationForm/RegistrationForm.vue'
+// import RegistrationForm from './components/Auth/RegistrationForm/RegistrationForm.vue'
+import NewPlace from './components/FavoritePlace/NewPlace.vue'
 // import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
 // import HomepageView from './views/HomepageView.vue'
 
@@ -24,7 +25,9 @@ const openModal = () => {
     <FavoritePlaces />
   </div> -->
 
-  <RegistrationForm @submit="console.log" />
-  <LoginForm @submit="console.log" />
-  <IModal v-if="isOpen" @close="closeModal">Modal</IModal>
+  <!-- <RegistrationForm @submit="console.log" /> -->
+  <!-- <LoginForm @submit="console.log" /> -->
+
+  <NewPlace @submit="console.log" />
+  <IModal v-if="isOpen" @close="closeModal"></IModal>
 </template>

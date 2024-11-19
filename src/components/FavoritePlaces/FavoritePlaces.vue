@@ -1,7 +1,6 @@
 <script setup>
 import FavoritePlace from '../FavoritePlace/FavoritePlace.vue'
 import IButton from '../IButton.vue'
-import IInput from '../IInput.vue'
 </script>
 
 <template>
