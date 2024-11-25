@@ -2,23 +2,38 @@
 import FavoritePlaceIconButton from './FavoritePlaceIconButton.vue'
 import DeleteIcon from './DeleteIcon.vue'
 import EditIcon from './EditIcon.vue'
+
+const props = defineProps({
+  title: {
+    required: true,
+    type: String
+  },
+  description: {
+    required: true,
+    type: String
+  },
+  img: String
+})
 </script>
 
 <template>
   <section class="mb-5 last:mb-0 text-grey">
     <div class="flex items-center justify-center gap-4">
-      <img class="w-[76px] h-[76px] shrink-0 border-none rounded-[4px]" src="" alt="" />
-      <div>
+      <img class="w-[76px] h-[76px] shrink-0 border-none rounded-[4px]" :src="props.img" alt="" />
+      <div class="w-full">
         <div class="flex justify-between items-center mb-2">
-          <h2 class="text-[14px] text-black font-bold">Пункт незламності</h2>
+          <h2 class="text-[14px] text-black font-bold">{{ props.title }}</h2>
           <div class="flex gap-2">
-            <FavoritePlaceIconButton><EditIcon /></FavoritePlaceIconButton>
-            <FavoritePlaceIconButton><DeleteIcon /></FavoritePlaceIconButton>
+            <FavoritePlaceIconButton>
+              <EditIcon />
+            </FavoritePlaceIconButton>
+            <FavoritePlaceIconButton>
+              <DeleteIcon />
+            </FavoritePlaceIconButton>
           </div>
         </div>
         <p class="text-[12px] line-clamp-3">
-          Проєкт української влади, який ініціювали у листопаді 2022 року на фоні масованих
-          обстрілів критичної інфраструктури з боку Росії під час російсько-української війни.
+          {{ props.description }}
         </p>
       </div>
     </div>

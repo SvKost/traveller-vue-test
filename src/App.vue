@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
-// import LoginForm from './components/Auth/LoginForm/LoginForm.vue'
-// import RegistrationForm from './components/Auth/RegistrationForm/RegistrationForm.vue'
-import NewPlaceModal from './components/NewPlaceModal/NewPlaceModal.vue'
-// import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
-// import HomepageView from './views/HomepageView.vue'
+import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
+import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
+import 'mapbox-gl/dist/mapbox-gl.css'
+import { mapSettings } from './map/settings'
+import MarkerIcon from './components/icons/MarkerIcon.vue'
 
 const isOpen = ref(true)
 
@@ -15,18 +15,51 @@ const closeModal = () => {
 const openModal = () => {
   isOpen.value = true
 }
+
+const favoritePlaces = [
+  {
+    id: 1,
+    title: 'title 1',
+    description: 'fav place 1',
+    img: '',
+    lngLat: [30.523333, 50.490001]
+  },
+  {
+    id: 2,
+    title: 'title 2',
+    description: 'fav place 2',
+    img: '',
+    lngLat: [30.523333, 50.455001]
+  }
+]
 </script>
 
 <template>
-  <button @click="openModal">Open Modal</button>
+  <main class="flex h-screen">
+    <div
+      class="bg-white h-full w-[400px] shadow-[0px_4px_31px_0px_rgba(44,44,44,0.10)] shrink-0 overflow-auto pb-10"
+    >
+      <FavoritePlaces :items="favoritePlaces" />
+    </div>
 
-  <!-- <HomepageView /> -->
-  <!-- <div class="bg-white shadow-[0px_4px_31px_0px_rgba(44,44,44,0.10)] h-screen w-[400px]">
-    <FavoritePlaces />
-  </div> -->
-
-  <!-- <RegistrationForm @submit="console.log" /> -->
-  <!-- <LoginForm @submit="console.log" /> -->
-
-  <NewPlaceModal :is-open="isOpen" @close="closeModal" @submit="console.log" />
+    <div class="w-full h-full flex items-center justify-center text-6xl">
+      <MapboxMap
+        class="w-full h-full"
+        :access-token="mapSettings.apiToken"
+        :map-style="mapSettings.style"
+        :center="[30.523333, 50.450001]"
+        :zoom="10"
+      >
+        <MapboxMarker v-for="place in favoritePlaces" :key="place.id" :lng-lat="place.lngLat">
+          <MarkerIcon class="w-7 h-7"
+        /></MapboxMarker>
+      </MapboxMap>
+    </div>
+  </main>
 </template>
+
+<!-- <RegistrationForm @submit="console.log" /> -->
+<!-- <LoginForm @submit="console.log" /> -->
+
+<!-- <button @click="openModal">Open Modal</button> -->
+<!-- <NewPlaceModal :is-open="isOpen" @close="closeModal" @submit="console.log" /> -->
