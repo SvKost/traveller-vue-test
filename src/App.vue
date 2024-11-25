@@ -1,20 +1,20 @@
 <script setup>
-import { ref } from 'vue'
+// import { ref } from 'vue'
 import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
 import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { mapSettings } from './map/settings'
 import MarkerIcon from './components/icons/MarkerIcon.vue'
 
-const isOpen = ref(true)
+// const isOpen = ref(true)
 
-const closeModal = () => {
-  isOpen.value = false
-}
+// const closeModal = () => {
+//   isOpen.value = false
+// }
 
-const openModal = () => {
-  isOpen.value = true
-}
+// const openModal = () => {
+//   isOpen.value = true
+// }
 
 const favoritePlaces = [
   {
