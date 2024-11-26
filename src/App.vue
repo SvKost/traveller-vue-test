@@ -35,9 +35,16 @@ const favoritePlaces = [
 ]
 
 const activeId = ref(null)
+const map = ref(null)
 
 const changeActiveId = (id) => {
   activeId.value = id
+}
+
+const changePlace = (id) => {
+  const { lngLat } = favoritePlaces.find((place) => place.id === id)
+  changeActiveId(id)
+  map.value.flyTo({ center: lngLat })
 }
 </script>
 
@@ -46,7 +53,7 @@ const changeActiveId = (id) => {
     <div
       class="bg-white h-full w-[400px] shadow-[0px_4px_31px_0px_rgba(44,44,44,0.10)] shrink-0 overflow-auto pb-10"
     >
-      <FavoritePlaces :items="favoritePlaces" :active-id="activeId" />
+      <FavoritePlaces :items="favoritePlaces" :active-id="activeId" @place-clicked="changePlace" />
     </div>
 
     <div class="w-full h-full flex items-center justify-center text-6xl">
@@ -56,6 +63,7 @@ const changeActiveId = (id) => {
         :map-style="mapSettings.style"
         :center="[30.523333, 50.450001]"
         :zoom="10"
+        @mb-created="(mapInstance) => (map = mapInstance)"
       >
         <MapboxMarker v-for="place in favoritePlaces" :key="place.id" :lng-lat="place.lngLat">
           <button @click="changeActiveId(place.id)">
