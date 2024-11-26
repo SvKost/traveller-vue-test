@@ -43,7 +43,7 @@ const props = defineProps({
     </div>
 
     <div
-      class="h-[1px] w-full bg-lightGrey mt-4"
+      class="h-[1px] w-full mt-4"
       :class="{ 'bg-primary': isActive, 'bg-lightGrey': !isActive }"
     ></div>
   </section>

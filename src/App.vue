@@ -44,7 +44,7 @@ const changeActiveId = (id) => {
 const changePlace = (id) => {
   const { lngLat } = favoritePlaces.find((place) => place.id === id)
   changeActiveId(id)
-  map.value.flyTo({ center: lngLat })
+  map.value.flyTo({ center: lngLat, zoom: '10' })
 }
 </script>
 
@@ -67,7 +67,12 @@ const changePlace = (id) => {
       >
         <MapboxMarker v-for="place in favoritePlaces" :key="place.id" :lng-lat="place.lngLat">
           <button @click="changeActiveId(place.id)">
-            <MarkerIcon class="w-7 h-7" />
+            <MarkerIcon
+              :class="{
+                'w-7 h-7': activeId !== place.id,
+                'w-9 h-9': activeId === place.id
+              }"
+            />
           </button>
         </MapboxMarker>
       </MapboxMap>
