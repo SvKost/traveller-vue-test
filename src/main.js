@@ -1,19 +1,13 @@
 import './assets/main.css'
 
+import App from './App.vue'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
-import App from './App.vue'
-
-import { svgSpritePlugin } from 'vue-svg-sprite'
+import { router } from './router'
 
 const app = createApp(App)
 
 app.use(createPinia())
-
-app.use(svgSpritePlugin, {
-  url: './assets/img/icons/icons.svg',
-  class: 'w-4 h-4 fill-primary'
-})
+app.use(router)
 
 app.mount('#app')
