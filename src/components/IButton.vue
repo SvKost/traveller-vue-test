@@ -1,5 +1,6 @@
 <script setup>
 import { computed, defineProps } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const props = defineProps({
   variant: {
@@ -8,19 +9,32 @@ const props = defineProps({
     validator: (value) => {
       return ['primary', 'gradient'].includes(value)
     }
-  }
+  },
+  to: String
 })
 
 const bgStyles = computed(() => {
   return props.variant === 'gradient' ? 'bg-button-gradient' : 'bg-lightPrimary'
 })
+
+const isLink = computed(() => !!props.to)
+
+const componentName = computed(() => {
+  return isLink.value ? RouterLink : 'button'
+})
+
+const link = computed(() => {
+  return isLink.value ? props.to : undefined
+})
 </script>
 
 <template>
-  <button
+  <component
+    :is="componentName"
     class="flex content-center justify-center m-auto rounded-xl py-[14px] px-10 text-white text-base font-bold -tracking-tight"
     :class="bgStyles"
+    :to="link"
   >
     <slot></slot>
-  </button>
+  </component>
 </template>

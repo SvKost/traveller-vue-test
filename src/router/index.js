@@ -12,6 +12,7 @@ const routes = [
   {
     path: '/auth',
     component: AuthPage,
+    redirect: '/auth/login',
     children: [
       { path: 'registration', component: RegistrationPage },
       { path: 'login', component: LoginPage }

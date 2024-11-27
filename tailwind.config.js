@@ -8,6 +8,7 @@ export default {
         lightPrimary: '#FFA279',
         grey: '#2C2C2C80',
         lightGrey: '#2C2C2C1A',
+        headerGrey: '#2C2C2C33',
         black: '#2C2C2C',
         white: '#FFF'
       },
