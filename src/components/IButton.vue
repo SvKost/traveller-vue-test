@@ -10,7 +10,11 @@ const props = defineProps({
       return ['primary', 'gradient'].includes(value)
     }
   },
-  to: String
+  to: String,
+  isLoading: {
+    default: false,
+    type: Boolean
+  }
 })
 
 const bgStyles = computed(() => {
@@ -35,6 +39,9 @@ const link = computed(() => {
     :class="bgStyles"
     :to="link"
   >
-    <slot></slot>
+    <template v-if="isLoading"> ...Loading </template>
+    <template v-else>
+      <slot></slot>
+    </template>
   </component>
 </template>
