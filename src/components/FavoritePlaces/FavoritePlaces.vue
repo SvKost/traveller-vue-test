@@ -30,6 +30,7 @@ const emit = defineEmits(['place-clicked'])
         :is-active="place.id === props.activeId"
         @click="emit('place-clicked', place.id)"
       />
+      <div v-if="items.length === 0" class="text-black">Список поки що порожній</div>
     </slot>
     <slot></slot>
     <IButton class="w-full mt-10" variant="gradient">Додати маркер</IButton>

@@ -23,7 +23,7 @@ const userData = reactive({
     <IInput placeholder="email@gmail.com" label="Електронна пошта" v-model="userData.email" />
     <IInput type="password" label="Пароль" v-model="userData.password" />
 
-    <IButton class="w-full mt-10" variant="gradient" type="submit" :is-loading="isLoading">
+    <IButton class="w-full mt-10" variant="gradient" type="submit" :is-loading="props.isLoading">
       Увійти
     </IButton>
   </form>
